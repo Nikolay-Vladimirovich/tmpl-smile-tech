@@ -1,0 +1,16 @@
+@use "sass:map";
+// ==================== Bootstrap функции и миксины : начало ====================
+@import "tmpl.commons/_from_bs.tech_vars.scss";
+@import "../../../node_modules/bootstrap/scss/_functions.scss";
+@import "../../../node_modules/bootstrap/scss/_mixins.scss";
+// ==================== Bootstrap функции и миксины : конец ====================
+
+@mixin svg-bgi($body, $color: 'none', $vb-w: '10', $vb-h: '10', $w: 'none', $h: 'none'){
+	background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='#{$w}' height='#{$h}' viewBox='0 0 #{$vb-w} #{$vb-h}' fill='none' stroke='none'>#{$body}</svg>"));
+};
+@mixin svg-bgi-fill($body, $color: 'none', $vb-w: '10', $vb-h: '10', $w: 'none', $h: 'none'){
+	background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='#{$w}' height='#{$h}' viewBox='0 0 #{$vb-w} #{$vb-h}' fill='#{$color}' stroke='none'>#{$body}</svg>"));
+};
+@mixin svg-bgi-stroke($body, $color: 'none', $vb-w: '10', $vb-h: '10', $w: 'none', $h: 'none'){
+	background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='#{$w}' height='#{$h}' viewBox='0 0 #{$vb-w} #{$vb-h}' fill='none' stroke='#{$color}'>#{$body}</svg>"));
+};

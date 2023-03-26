@@ -1,0 +1,31 @@
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@@title</title>
+	<link rel="icon" href="favicon/favicon.svg">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="manifest" href="manifest.json">
+	<link rel="stylesheet" href="css/extensions/extensions.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+	@@if (isMultipleColorScheme) {
+	<meta name="color-scheme" content="light dark">
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8faff">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#5c5c5a">
+	<script>
+		if (matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
+			document.documentElement.style.display = 'none';
+			document.head.insertAdjacentHTML(
+				'beforeend',
+				'<link rel="stylesheet" href="css/color-scheme-light.min.css" onload="document.documentElement.style.display=\'\'">'
+			);
+		}
+	</script>
+	<link rel="stylesheet" href="css/color-scheme-light.min.css" media="(prefers-color-scheme: light)">
+	<link rel="stylesheet" href="css/color-scheme-dark.min.css" media="(prefers-color-scheme: dark)">
+	}
+	<script defer src="js/app.min.js"></script>
+	@@if (isDevUtilsEnable) { @@include('../dev-utils/head.html') }
+	@@if (isDevUtilsEnable) { @@include('../dev-utils/devscripts.html') }
+</head>

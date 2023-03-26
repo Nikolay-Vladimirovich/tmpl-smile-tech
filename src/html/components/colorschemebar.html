@@ -1,0 +1,14 @@
+@@if (isMultipleColorScheme) {
+<div class="colorschemebar navbar__colorschemebar">
+	<fieldset class="switcher">
+		<legend class="switcher__legend">Схема</legend>
+		<input name="color-scheme" value="light" aria-label="Светлая" type="radio"
+				 class="switcher__radio switcher__radio--light">
+		<input checked name="color-scheme" value="auto" aria-label="Системная" type="radio"
+				 class="switcher__radio switcher__radio--auto">
+		<input name="color-scheme" value="dark" aria-label="Светлая" type="radio"
+				 class="switcher__radio switcher__radio--dark">
+		<div class="switcher__status"></div>
+	</fieldset><!-- / .switcher .colorschemebar__switcher -->
+</div><!-- / .colorschemebar -->
+}

@@ -1,0 +1,105 @@
+.switcher {
+	position: absolute;
+	bottom: rem(2);
+	left: 50%;
+	margin: 0;
+	margin-left: rem(-50);
+	padding: rem(2);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	border: none;
+	gap: rem(10);
+}
+/* Switcher Legend */
+.switcher__legend {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+/* Switcher Radio */
+.switcher__radio {
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	margin: 0;
+	width: rem(32);
+	height: rem(32);
+	border: none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: rem(24);
+	transition: filter var(--simple-transition-duration) ease-in;
+}
+.switcher__radio:focus {
+	outline: none;
+}
+$colorDay: $orange;
+$colorAuto: #444;
+$colorNight: $purple;
+.switcher__radio--light {
+	background-image: escape-svg(url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$colorDay}"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zM2 13h2a1 1 0 001-1 1 1 0 00-1-1H2a1 1 0 00-1 1 1 1 0 001 1zm18 0h2a1 1 0 001-1 1 1 0 00-1-1h-2a1 1 0 00-1 1 1 1 0 001 1zM11 2v2a1 1 0 001 1 1 1 0 001-1V2a1 1 0 00-1-1 1 1 0 00-1 1zm0 18v2a1 1 0 001 1 1 1 0 001-1v-2a1 1 0 00-2 0zM5.99 4.58a1 1 0 10-1.41 1.41l1.06 1.06a1 1 0 101.41-1.41L5.99 4.58zm12.37 12.37a1 1 0 10-1.41 1.41l1.06 1.06a1 1 0 101.41-1.41l-1.06-1.06zm1.06-10.96a1 1 0 10-1.41-1.41l-1.06 1.06a1 1 0 101.41 1.41l1.06-1.06zM7.05 18.36a1 1 0 10-1.41-1.41l-1.06 1.06a1 1 0 101.41 1.41l1.06-1.06z"/></svg>'));
+}
+.switcher__radio--auto {
+	background-image: escape-svg(url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$colorAuto}"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path fill-rule="evenodd" d="M22 12a10 10 0 11-20 0 10 10 0 0120 0zm-2 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg>'));
+}
+.switcher__radio--dark {
+	background-image: escape-svg(url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$colorNight}"><path d="M12 3a9 9 0 108.9 7.64 5.39 5.39 0 01-9.2-5.61 5.4 5.4 0 011.66-1.93c-.44-.06-.9-.1-1.36-.1z"/></svg>'));
+}
+/* Switcher Status */
+$status-color: #222;
+$status-border-color: #000;
+$status-panel-bg-color: #eee;
+.switcher__status {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	box-shadow: 0 0 0 rem(2) rgba($status-border-color, 0.2);
+	border-radius: rem(18);
+	background-color: rgba($status-panel-bg-color, 0.5);
+	background-repeat: no-repeat;
+	background-image: escape-svg(url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="#{$status-color}" cx="12" cy="12" r="12"/></svg>'));
+	background-size: rem(32);
+	background-position: center;
+	transition: background-position 0.1s ease-in;
+}
+.switcher__radio:focus-visible ~ .switcher__status {
+	box-shadow: 0 0 0 rem(2) $status-color;
+}
+.switcher__radio--light:checked ~ .switcher__status {
+	background-position: left rem(2) center;
+}
+.switcher__radio--auto:checked ~ .switcher__status {
+	background-position: center center;
+}
+.switcher__radio--dark:checked ~ .switcher__status {
+	background-position: right rem(2) center;
+}
+/* Switcher */
+.switcher__radio--light {
+	filter: brightness(1);
+}
+.switcher__radio--light:checked {
+	filter: brightness(1.5);
+}
+/*  */
+.switcher__radio--auto {
+	filter: invert(0);
+}
+.switcher__radio--auto:checked {
+	filter: invert(1);
+}
+/*  */
+.switcher__radio--dark {
+	// transition-property: none;
+	filter: invert(0) brightness(1);
+}
+.switcher__radio--dark:checked {
+	filter: invert(1) brightness(2);
+}
+/*  */
+.switcher__status {
+	filter: invert(0) brightness(1);
+}

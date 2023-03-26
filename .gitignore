@@ -1,0 +1,7 @@
+node_modules
+archive
+public
+dist
+prod
+src/stack
+gulp/version.json
